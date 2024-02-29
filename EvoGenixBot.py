@@ -285,13 +285,6 @@ async def call_me_bot(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int
     if update.message.text in [bot_name,bot_name+" جون"]:
         _answer_ = ['جوونم این همه مرام',"سلام به همه داش مشتی ها"]
         await update.message.reply_html(text=random.choice(_answer_),reply_to_message_id=update.message.message_id)
-    else:
-        if update.message["from"]["id"] not in [owener_id,bussiness_id,sheyda_id]:
-            await update.message.reply_html(text=random.choice(_answers_),reply_to_message_id=update.message.message_id)
-        elif update.message["from"]["id"] in [owener_id,bussiness_id,sheyda_id]:
-            await update.message.reply_html(text=random.choice(['جانم','جان']),reply_to_message_id=update.message.message_id)
-            if update.message["from"]["id"] == sheyda_id:
-                await update.message.forward(chat_id=owener_id)
 
 async def i_am_tired(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     _answers_ = ['خسته نباشی عزیزم','فدای خستگی هات بشم','منم خسته ام🥺','بیا بغلم🥲']
@@ -303,9 +296,9 @@ async def i_am_sad(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 
 async def how_are_you(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
     _answers_ = ['تو خوبی؟\nتا وقتی تو خوب باشی منم خوبم',"خوبم مرسی که پرسیدی",'خوبم تو حالت خوبه؟']
-    if update.message["from"]["id"] not in [sheyda_id,owener_id,bussiness_id]:
+    if update.message["from"]["id"] not in [owener_id,bussiness_id]:
         await update.message.reply_html(text=random.choice(_answers_),reply_to_message_id=update.message.message_id)
-    elif update.message["from"]["id"] in [sheyda_id,owener_id,bussiness_id]:
+    elif update.message["from"]["id"] in [owener_id,bussiness_id]:
         await update.message.reply_html(text='تو خوبی؟\nتا وقتی تو خوب باشی منم خوبم',reply_to_message_id=update.message.message_id)
 
 async def error_handler(update: object, context: ContextTypes.DEFAULT_TYPE) -> None:
